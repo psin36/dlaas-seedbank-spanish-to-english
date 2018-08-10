@@ -1,5 +1,8 @@
 # dlaas-seedbank-spanish-to-english
 
+### This lab is a shortened version of [Watson Studio Lab][watson-studio-lab]
+### [Spanish-to-English model][seedbank] is taken from Google Seedbank
+
 ## Creating a [IBM][ibmcloud] Account
 
   1. Go to [https://console.ng.bluemix.net/](https://console.ng.bluemix.net/)
@@ -11,8 +14,11 @@
 ## Setup your local environment to interact with IBM Cloud 
 
 1. Open Terminal window 
-2. Change to [`WML-setup-scripts/scripts/install-wml-cli/`][setup_scripts] directory
+
+2. Change to [`WML-setup-scripts/scripts/install-wml-cli/`][setup_scripts] directory  
+
 3. Run the appropraite script (`windows_wmlcli_setup.bat` or `linux-osx_wmlcli_setup.sh`) to install Bluemix CLI 
+
 4. login to IBM Cloud using CLI
      `bx api https://api.ng.bluemix.net`
     
@@ -23,28 +29,35 @@
      `bx login -sso  < select your personal account>`
 5. Set resource target to default
      `bx target -g default`      
+     
 6. Running the set up scripts will install ML plugin to bx CLI, create a [Watson Machine Learning][wml_service] instance, a [Cloud Object Store][cos_service] instance, and buckets in the COS.  
-    ` Note: Enter a unique name for your bucket. i.e: think-<your_lastname> when asked`   
+    ` Note: Enter a unique name for your bucket. i.e: think-<your_lastname> when asked.`   
     ` Note: Record the output as we will need this for the next step.`
+    
 7. Export your COS access key ID and secret access key (These are your COS credentials)
 
    		 export AWS_ACCESS_KEY_ID=<access_keyid_from_output_from_above>
    	     export AWS_SECRET_ACCESS_KEY=<secret_key_from_above>
 
-8. Export ML environment variables
+   Export ML environment variables
 
  	     export ML_INSTANCE=<wml_instnace id>
- 	     export ML_USERNAME=<wml_instance uaerid>   
+ 	     export ML_USERNAME=<wml_instance userid>   
  	     export ML_PASSWORD=<wml_instnace password>
   	     export ML_ENV=<wml_instance url> 
-         
+     
+To set these environment variables for long-term use, or for windows instructions please refer to the following:
+ - [macOS][mac]
+ - [linux][lin]
+ - [windows][win]
+     
 ## Upload data files and update the tf-train.yaml file
 1. Edit `sentences_to_translate.txt` with the spanish sentences you want to translate to English. (Sentences are separated by line breaks.)
 
 2. Upload `sentences_to_translate.txt` to Cloud Object Storage
    `aws --endpoint-url=https://s3-api.us-geo.objectstorage.softlayer.net s3 sync sentences_to_translate.txt s3://think-<your_lastname>`
  
-2. Update `train.yaml` file with your COS information. Update aws_access_key_id, aws_secret_access_key and bucket names
+3. Update `train.yaml` file with your COS information. Update aws_access_key_id, aws_secret_access_key and bucket names
 
 
     ```name: training_data_reference_name
@@ -116,10 +129,10 @@
    
    `bx ml show training-runs training-kHC1ACgmg`
    
-5. You can list  the log file  or trained model or download the  trained model using the following aws cli
-`aws --endpoint-url=https://s3-api.us-geo.objectstorage.softlayer.net s3 ls s3://think-<your_lastname>/<training_id>/learner-1/`
+5. You can access the training-logs, gpu-usage, and sentence translations using the following aws cli
+`aws --endpoint-url=https://s3-api.us-geo.objectstorage.softlayer.net s3 ls s3://<bucket_name>/<training_id>/learner-1/gpulogs.csv`
 
-`aws --endpoint-url=https://s3-api.us-geo.objectstorage.softlayer.net s3 ls s3://think-<your_lastname>/<training_id>/model/`
+`aws --endpoint-url=https://s3-api.us-geo.objectstorage.softlayer.net s3 ls s3://<bucket_name>/<training_id>/results.txt`
 
 # Congratulations
 Yahoo!!! You completed this lab!!! :bowtie:
@@ -128,3 +141,8 @@ Yahoo!!! You completed this lab!!! :bowtie:
 [wml_service]: https://console.bluemix.net/catalog/services/machine-learning?taxonomyNavigation=apps
 [cos_service]: https://console.bluemix.net/catalog/services/cloud-object-storage?taxonomyNavigation=apps
 [setup_scripts]: https://github.com/atinsood/WML-setup-scripts.git
+[watson-studio-lab]: https://github.com/atinsood/watson-studio-lab.git
+[seedbank]: https://tools.google.com/seedbank/seed/5695159920492544 
+[mac]: https://medium.com/@himanshuagarwal1395/setting-up-environment-variables-in-macos-sierra-f5978369b255  
+[win]: https://superuser.com/a/284351 
+[lin]: https://askubuntu.com/a/58828
