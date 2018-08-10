@@ -47,7 +47,7 @@
 2. Update `train.yaml` file with your COS information. Update aws_access_key_id, aws_secret_access_key and bucket names
 
 
-    name: training_data_reference_name
+    ```name: training_data_reference_name
     connection:
       endpoint_url: "https://s3-api.us-geo.objectstorage.service.networklayer.com"
       aws_access_key_id: "<access_keyid_from_above>"
@@ -64,7 +64,7 @@
         aws_secret_access_key: "<access_key_from_above>"
       target:
         bucket: think-<your_lastname>
-      type: s3
+      type: s3```
 
   
 ## Submit your training job
