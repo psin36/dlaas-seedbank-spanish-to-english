@@ -5,9 +5,9 @@
 
 ## Creating a [IBM][ibmcloud] Account
 
-  1. Go to [https://console.ng.bluemix.net/](https://console.ng.bluemix.net/)
+  1. Go to [https://console.ng.bluemix.net/](https://console.ng.bluemix.net/).
   2. Create an IBM ID if required.
-  3. Log in with your IBM ID (the ID used to create your Bluemix account)
+  3. Log in with your IBM ID (the ID used to create your Bluemix account).
 
 **Note:** The confirmation email from IBM Cloud mail take up to 1 hour.
 
@@ -17,11 +17,11 @@
 
 2. Open Terminal and move into the directory containing the scripts.  
 
-3. Run the appropraite script (`windows_wmlcli_setup.bat` or `linux-osx_wmlcli_setup.sh`) to install Bluemix CLI 
+3. Run the appropraite script (`windows_wmlcli_setup.bat` or `linux-osx_wmlcli_setup.sh`) to install Bluemix CLI. 
 
 4. Use the IBM Cloud ID and associated password you created earlier to login when prompted.
 
-5. The script should set your resource target to default, but if it doesn't you can do so after the script finishes running.  
+5. The script should set your resource target to default, but if it doesn't, you can do so after the script finishes running.  
 `bx target -g default`
      
 6. Running the set up scripts will install ML plugin to bx CLI, create a [Watson Machine Learning][wml_service] instance, a [Cloud Object Store][cos_service] instance, and buckets in the COS.  
@@ -50,12 +50,12 @@ To set these environment variables for long-term use please refer to the followi
 `Default output format []: json`
 
 ## Upload data files and update the tf-train.yaml file
-1. Edit `sentences_to_translate.txt` with the spanish sentences you want to translate to English. (Sentences are separated by line breaks.)
+1. Edit `sentences_to_translate.txt` to include the spanish sentences you want to translate to English. (Sentences are separated by line breaks.)
 
-2. Upload `sentences_to_translate.txt` to Cloud Object Storage
-   `aws --endpoint-url=https://s3-api.us-geo.objectstorage.softlayer.net s3 sync sentences_to_translate.txt s3://think-<your_lastname>`
+2. Upload `sentences_to_translate.txt` to your training bucket in the Cloud Object Storage
+   `aws --endpoint-url=https://s3-api.us-geo.objectstorage.softlayer.net s3 sync sentences_to_translate.txt s3://<training-bucket-name>`
  
-3. Update `train.yaml` file with your COS information. Update aws_access_key_id, aws_secret_access_key and bucket names
+3. Update `train.yaml` with your COS information. Update aws_access_key_id, aws_secret_access_key and bucket names.
 
 
     ```name: training_data_reference_name
@@ -64,7 +64,7 @@ To set these environment variables for long-term use please refer to the followi
       aws_access_key_id: "<access_keyid_from_above>"
       aws_secret_access_key: "<access_key_from_above>"
     source:
-      bucket: think-<your_lastname>
+      bucket: <training-bucket-name>
     type: s3
     
     training_results_reference:
@@ -74,7 +74,7 @@ To set these environment variables for long-term use please refer to the followi
         aws_access_key_id: "<access_keyid_from_above>"
         aws_secret_access_key: "<access_key_from_above>"
       target:
-        bucket: think-<your_lastname>
+        bucket: <result-bucket-name>
       type: s3```
 
   
@@ -99,7 +99,7 @@ To set these environment variables for long-term use please refer to the followi
           url                      /v3/models/training-kHC1ACgmg
           Name                     tf-mnist-showtest1
           Training definition ID   64154e3a-1397-4d95-a45c-1af73421ed87
-          Command                  python3 convolutional_network.py --trainImagesFile ${DATA_DIR}/train-images-idx3-ubyte.gz --trainLabelsFile ${DATA_DIR}/train-labels-idx1-ubyte.gz --testImagesFile ${DATA_DIR}/t10k-images-idx3-ubyte.gz --testLabelsFile ${DATA_DIR}/t10k-labels-idx1-ubyte.gz --learningRate 0.001 --trainingIters 20000
+          Command                  bash myscript.sh
           Source bucket            think-sdiamond
           Target bucket            think-sdiamond
           Framework name           tensorflow
@@ -119,7 +119,7 @@ To set these environment variables for long-term use please refer to the followi
         [--LOGS]        DATA_DIR: /mnt/data/think-sdiamond
         [--LOGS]        MODEL_DIR: /job/model-code
         [--LOGS]        TRAINING_JOB:
-        [--LOGS]        TRAINING_COMMAND: python3 convolutional_network.py --trainImagesFile ${DATA_DIR}/train-images-idx3-ubyte.gz --trainLabelsFile ${DATA_DIR}/train-labels-idx1-ubyte.gz --testImagesFile ${DATA_DIR}/t10k-images-idx3-ubyte.gz --testLabelsFile ${DATA_DIR}/t10k-labels-idx1-ubyte.gz --learningRate 0.001 --trainingIters 20000
+        [--LOGS]        TRAINING_COMMAND: bash myscript.sh
         [--LOGS]      Storing trained model at:
         ...
 
