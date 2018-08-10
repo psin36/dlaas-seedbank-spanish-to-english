@@ -46,14 +46,17 @@
    - [windows][win]
      
 8. Set the default output format and region for aws:
+
 `Default region name []: us-geo`
+
 `Default output format []: json`
 
 ## Upload data files and update the tf-train.yaml file
 1. Edit `sentences_to_translate.txt` to include the Spanish sentences you want to translate to English. (Sentences are separated by line breaks.)
 
 2. Upload `sentences_to_translate.txt` to your training bucket in the Cloud Object Storage
-   `aws --endpoint-url=https://s3-api.us-geo.objectstorage.softlayer.net s3 sync sentences_to_translate.txt s3://<training-bucket-name>`
+
+`aws --endpoint-url=https://s3-api.us-geo.objectstorage.softlayer.net s3 sync sentences_to_translate.txt s3://<training-bucket-name>`
  
 3. Update `train.yaml` with your COS information. Update aws_access_key_id, aws_secret_access_key and bucket names.
 
