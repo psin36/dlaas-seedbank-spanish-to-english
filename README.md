@@ -135,10 +135,14 @@
    
 6. You can access the training-logs, gpu-usage, and sentence translations using the following aws cli  
 
-`aws --endpoint-url=https://s3-api.us-geo.objectstorage.softlayer.net s3 ls s3://<result-bucket_name>/<training_id>/learner-1/gpulogs.csv`  
-`aws --endpoint-url=https://s3-api.us-geo.objectstorage.softlayer.net s3 ls s3://<result-bucket_name>/<training_id>/results.txt`
+gpu logs: `aws --endpoint-url=https://s3-api.us-geo.objectstorage.softlayer.net s3 ls s3://<result-bucket_name>/<training_id>/learner-1/gpulogs.csv`  
 
-7. Sample results using example sentences (in `sentences_to_translate`):
+translations: `aws --endpoint-url=https://s3-api.us-geo.objectstorage.softlayer.net s3 ls s3://<result-bucket_name>/<training_id>/results.txt`
+
+training logs: `aws --endpoint-url=https://s3-api.us-geo.objectstorage.softlayer.net s3 ls s3://<result-bucket_name>/<training_id>/learner-1/training-log.txt`
+
+## Sample results 
+Using example sentences (in `sentences_to_translate`):
 
 Model trained with 50,000 examples: `sample_results_50000_examples_training.txt`
 
