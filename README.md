@@ -75,14 +75,16 @@
         aws_secret_access_key: "<access_key_from_above>"
       target:
         bucket: <result-bucket-name>
-      type: s3```
+      type: s3
 
   
 ## Submit your training job
-0. Create the model zip file containing the code for the model and the bash script containing the commands to be run  
+1. Create the model zip file containing the code for the model and the bash script containing the commands to be run  
+  
   `zip -r spa-to-eng-model.zip nmt_with_attention.py myscript.sh`
 
-1. Submit the training job
+2. Submit the training job
+ 
  ` bx ml train spa-to-eng-model.zip train.yaml`
  
     sample output:
@@ -90,7 +92,8 @@
         OK
         Model-ID is 'training-kHC1ACgmg' (this will be your <training_id>)
 
-2. Monitor training run:
+3. Monitor training run:
+  
   `bx ml show training-runs <training_id>`
 
     Sample output:
@@ -109,7 +112,8 @@
           OK
           Show training-runs details successful
 
-3. Monitor the logs of the training run:
+4. Monitor the logs of the training run:
+  
   `bx ml monitor training-runs <training_id>`
 
     Sample output:
@@ -122,14 +126,16 @@
         [--LOGS]      Storing trained model at:
         ...
 
-4.  Query training job status until status shows ‘completed’
-    `bx ml show training-runs training-kHC1ACgmg`
+5.  Query training job status until status shows ‘completed’
    
-5. You can access the training-logs, gpu-usage, and sentence translations using the following aws cli  
+   `bx ml show training-runs training-kHC1ACgmg`
+   
+6. You can access the training-logs, gpu-usage, and sentence translations using the following aws cli  
+
 `aws --endpoint-url=https://s3-api.us-geo.objectstorage.softlayer.net s3 ls s3://<bucket_name>/<training_id>/learner-1/gpulogs.csv`  
 `aws --endpoint-url=https://s3-api.us-geo.objectstorage.softlayer.net s3 ls s3://<bucket_name>/<training_id>/results.txt`
 
-6. You can see sample results using 50,000 and 110,000 examples to train the model in `sample_results_50000_examples_training.txt` and `sample_results_110000_examples_training.txt`.
+7. You can see sample results using 50,000 and 110,000 examples to train the model in `sample_results_50000_examples_training.txt` and `sample_results_110000_examples_training.txt`.
 
 # Congratulations
 Yahoo!!! You completed this lab!!! :bowtie:
