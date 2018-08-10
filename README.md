@@ -6,16 +6,16 @@
 ## Creating a [IBM][ibmcloud] Account
 
   1. Go to [https://console.ng.bluemix.net/](https://console.ng.bluemix.net/)
-  2. Create a IBM ID if required.
+  2. Create an IBM ID if required.
   3. Log in with your IBM ID (the ID used to create your Bluemix account)
 
 **Note:** The confirmation email from IBM Cloud mail take up to 1 hour.
 
 ## Setup your local environment to interact with IBM Cloud 
 
-1. Open Terminal window 
+1. Download the [WML-setup-scripts][setup_scripts]. 
 
-2. Change to [`WML-setup-scripts/scripts/install-wml-cli/`][setup_scripts] directory  
+2. Open Terminal and move into the directory containing the scripts.  
 
 3. Run the appropraite script (`windows_wmlcli_setup.bat` or `linux-osx_wmlcli_setup.sh`) to install Bluemix CLI 
 
