@@ -19,20 +19,14 @@
 
 3. Run the appropraite script (`windows_wmlcli_setup.bat` or `linux-osx_wmlcli_setup.sh`) to install Bluemix CLI 
 
-4. login to IBM Cloud using CLI
-     `bx api https://api.ng.bluemix.net`
-    
-     `bx login`
-     
-      or:
-     
-     `bx login -sso  < select your personal account>`
-5. Set resource target to default
-     `bx target -g default`      
+4. Use the IBM Cloud ID and associated password you created earlier to login when prompted.
+
+5. The script should set your resource target to default, but if it doesn't you can do so after the script finishes running.  
+`bx target -g default`
      
 6. Running the set up scripts will install ML plugin to bx CLI, create a [Watson Machine Learning][wml_service] instance, a [Cloud Object Store][cos_service] instance, and buckets in the COS.  
     ` Note: Enter a unique name for your bucket. i.e: think-<your_lastname> when asked.`   
-    ` Note: Record the output as we will need this for the next step.`
+    ` Note: Record the output as you will need this for the next step.`
     
 7. Export your COS access key ID and secret access key (These are your COS credentials)
 
@@ -46,11 +40,15 @@
  	     export ML_PASSWORD=<wml_instnace password>
   	     export ML_ENV=<wml_instance url> 
      
-To set these environment variables for long-term use, or for windows instructions please refer to the following:
+To set these environment variables for long-term use please refer to the following:
  - [macOS][mac]
  - [linux][lin]
  - [windows][win]
      
+8. Set the default output format and region for aws:
+`Default region name []: us-geo`
+`Default output format []: json`
+
 ## Upload data files and update the tf-train.yaml file
 1. Edit `sentences_to_translate.txt` with the spanish sentences you want to translate to English. (Sentences are separated by line breaks.)
 
@@ -129,9 +127,8 @@ To set these environment variables for long-term use, or for windows instruction
    
    `bx ml show training-runs training-kHC1ACgmg`
    
-5. You can access the training-logs, gpu-usage, and sentence translations using the following aws cli
-`aws --endpoint-url=https://s3-api.us-geo.objectstorage.softlayer.net s3 ls s3://<bucket_name>/<training_id>/learner-1/gpulogs.csv`
-
+5. You can access the training-logs, gpu-usage, and sentence translations using the following aws cli  
+`aws --endpoint-url=https://s3-api.us-geo.objectstorage.softlayer.net s3 ls s3://<bucket_name>/<training_id>/learner-1/gpulogs.csv`  
 `aws --endpoint-url=https://s3-api.us-geo.objectstorage.softlayer.net s3 ls s3://<bucket_name>/<training_id>/results.txt`
 
 # Congratulations
