@@ -1,0 +1,42 @@
+Input: Hace mucho frio aqui.
+Predicted translation: it is very cold here . <end> 
+Input: Esta es mi vida.
+Predicted translation: this is my life . <end> 
+Input: ¿Todavia estan en casa?
+Predicted translation: are you still at home ? <end> 
+Input: Trata de averiguarlo.
+Predicted translation: try to figure it right . <end> 
+Input: ¿Cual es tu nombre?
+Predicted translation: what s your name ? <end> 
+Input: ¿Cuándo regresaste de tu viaje?
+Predicted translation: when did you come back from your trip ? <end> 
+Input: ¿Qué edad tiene tu hija?
+Predicted translation: how old is your daughter ? <end> 
+Input: Disfruto leyendo libros los fines de semana.
+Predicted translation: i enjoyed reading books on weekends . <end> 
+Input: ¿Quién es el chico de allí?
+Predicted translation: who s the boy standing there ? <end> 
+Input: Vivo cerca de la biblioteca.
+Predicted translation: i live near the library . <end> 
+Input: La escuela comienza en dos semanas.
+Predicted translation: school begins in two weeks . <end> 
+Input: ¿Alguna vez has estado en México?
+Predicted translation: have you ever been to mexico ? <end> 
+Input: No dormí mucho anoche.
+Predicted translation: i didn t sleep long last night . <end> 
+Input: Mi color favorito es el azul.
+Predicted translation: my favorite color is blue . <end> 
+Input: ¡Me gusta tu vestido!
+Predicted translation: i like your dress ! <end> 
+Input: Perdí mi botella de agua en el parque ayer.
+Predicted translation: i lost my water bottle in the new yesterday . <end> 
+Input: ¿Como estuvo la boda?
+Predicted translation: how was the wedding ? <end> 
+Input: Me gustan los perros mejor que los gatos.
+Predicted translation: i like dogs better than cats . <end> 
+Input: Estoy planeando un corte de pelo mañana.
+Predicted translation: i m planning a haircut . <end> 
+Input: Me rompí la pierna la semana pasada cuando fui en bicicleta.
+Predicted translation: i broke my leg last year . <end> 
+Input: Necesito una computadora portátil nueva para mi hijo.
+Predicted translation: i need a new song for my son . <end> 
