@@ -23,8 +23,8 @@
      `bx login -sso  < select your personal account>`
 5. Set resource target to default
      `bx target -g default`      
-6. Running the set up scripts will install ML plugin to bx CLI, create a [Watson Machine Learning][wml_service] instance, a [Cloud Object Store][cos_service] instance, and buckets in the COS.
-    ` Note: Enter a unique name for your bucket. i.e: think-<your_lastname> when asked`
+6. Running the set up scripts will install ML plugin to bx CLI, create a [Watson Machine Learning][wml_service] instance, a [Cloud Object Store][cos_service] instance, and buckets in the COS.  
+    ` Note: Enter a unique name for your bucket. i.e: think-<your_lastname> when asked`   
     ` Note: Record the output as we will need this for the next step.`
 7. Export your COS access key ID and secret access key (These are your COS credentials)
 
