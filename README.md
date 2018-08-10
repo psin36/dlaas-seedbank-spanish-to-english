@@ -135,8 +135,8 @@
    
 6. You can access the training-logs, gpu-usage, and sentence translations using the following aws cli  
 
-`aws --endpoint-url=https://s3-api.us-geo.objectstorage.softlayer.net s3 ls s3://<bucket_name>/<training_id>/learner-1/gpulogs.csv`  
-`aws --endpoint-url=https://s3-api.us-geo.objectstorage.softlayer.net s3 ls s3://<bucket_name>/<training_id>/results.txt`
+`aws --endpoint-url=https://s3-api.us-geo.objectstorage.softlayer.net s3 ls s3://<result-bucket_name>/<training_id>/learner-1/gpulogs.csv`  
+`aws --endpoint-url=https://s3-api.us-geo.objectstorage.softlayer.net s3 ls s3://<result-bucket_name>/<training_id>/results.txt`
 
 7. Sample results using example sentences (in `sentences_to_translate`):
 
