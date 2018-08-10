@@ -40,17 +40,17 @@
  	     export ML_PASSWORD=<wml_instnace password>
   	     export ML_ENV=<wml_instance url> 
      
-To set these environment variables for long-term use please refer to the following:
- - [macOS][mac]
- - [linux][lin]
- - [windows][win]
+   To set these environment variables for long-term use please refer to the following:
+   - [macOS][mac]
+   - [linux][lin]
+   - [windows][win]
      
 8. Set the default output format and region for aws:
 `Default region name []: us-geo`
 `Default output format []: json`
 
 ## Upload data files and update the tf-train.yaml file
-1. Edit `sentences_to_translate.txt` to include the spanish sentences you want to translate to English. (Sentences are separated by line breaks.)
+1. Edit `sentences_to_translate.txt` to include the Spanish sentences you want to translate to English. (Sentences are separated by line breaks.)
 
 2. Upload `sentences_to_translate.txt` to your training bucket in the Cloud Object Storage
    `aws --endpoint-url=https://s3-api.us-geo.objectstorage.softlayer.net s3 sync sentences_to_translate.txt s3://<training-bucket-name>`
@@ -79,9 +79,10 @@ To set these environment variables for long-term use please refer to the followi
 
   
 ## Submit your training job
+0. Create the model zip file containing the code for the model and the bash script containing the commands to be run  
+  `zip -r spa-to-eng-model.zip nmt_with_attention.py myscript.sh`
 
 1. Submit the training job
-
  ` bx ml train spa-to-eng-model.zip train.yaml`
  
     sample output:
@@ -90,7 +91,6 @@ To set these environment variables for long-term use please refer to the followi
         Model-ID is 'training-kHC1ACgmg' (this will be your <training_id>)
 
 2. Monitor training run:
-
   `bx ml show training-runs <training_id>`
 
     Sample output:
@@ -110,7 +110,6 @@ To set these environment variables for long-term use please refer to the followi
           Show training-runs details successful
 
 3. Monitor the logs of the training run:
-
   `bx ml monitor training-runs <training_id>`
 
     Sample output:
@@ -124,12 +123,13 @@ To set these environment variables for long-term use please refer to the followi
         ...
 
 4.  Query training job status until status shows ‘completed’
-   
-   `bx ml show training-runs training-kHC1ACgmg`
+    `bx ml show training-runs training-kHC1ACgmg`
    
 5. You can access the training-logs, gpu-usage, and sentence translations using the following aws cli  
 `aws --endpoint-url=https://s3-api.us-geo.objectstorage.softlayer.net s3 ls s3://<bucket_name>/<training_id>/learner-1/gpulogs.csv`  
 `aws --endpoint-url=https://s3-api.us-geo.objectstorage.softlayer.net s3 ls s3://<bucket_name>/<training_id>/results.txt`
+
+6. You can see sample results using 50,000 and 110,000 examples to train the model in `sample_results_50000_examples_training.txt` and `sample_results_110000_examples_training.txt`.
 
 # Congratulations
 Yahoo!!! You completed this lab!!! :bowtie:
