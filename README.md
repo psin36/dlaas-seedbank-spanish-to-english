@@ -138,7 +138,13 @@
 `aws --endpoint-url=https://s3-api.us-geo.objectstorage.softlayer.net s3 ls s3://<bucket_name>/<training_id>/learner-1/gpulogs.csv`  
 `aws --endpoint-url=https://s3-api.us-geo.objectstorage.softlayer.net s3 ls s3://<bucket_name>/<training_id>/results.txt`
 
-7. You can see sample results using 50,000 and 110,000 examples to train the model in `sample_results_50000_examples_training.txt` and `sample_results_110000_examples_training.txt`.
+7. Sample results using example sentences (in `sentences_to_translate`):
+
+Model trained with 50,000 examples: `sample_results_50000_examples_training.txt`
+
+Model trained with 110,000 examples: `sample_results_110000_examples_training.txt`
+
+[Google Translate][google_translate]: `sentences_translated_by_google_translate.txt`
 
 # Congratulations
 Yahoo!!! You completed this lab!!! :bowtie:
@@ -152,3 +158,4 @@ Yahoo!!! You completed this lab!!! :bowtie:
 [mac]: https://medium.com/@himanshuagarwal1395/setting-up-environment-variables-in-macos-sierra-f5978369b255  
 [win]: https://superuser.com/a/284351 
 [lin]: https://askubuntu.com/a/58828
+[google_translate]: https://translate.google.com/ 
