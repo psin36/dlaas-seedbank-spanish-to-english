@@ -1,0 +1,30 @@
+model_definition:
+  name: spanish-to-english-seedbank
+  author:
+    name: Prachi Sinha
+  description: translate spanish sentences to english
+  framework:
+    name: tensorflow
+    version: "1.5"
+  execution:
+    command: bash myscript.sh
+    compute_configuration:
+      name: k80
+training_data_reference:
+  name: training_data_reference
+  connection:
+    endpoint_url: "https://s3-api.us-geo.objectstorage.service.networklayer.com"
+    access_key_id: "deeab38a8ee446d29e4498d70d60e639"
+    secret_access_key: "8a05e5ccde3d5911db0e83686a84eaf6776655d38127c863"
+  source:
+    bucket: source-bucket-36
+  type: s3
+training_results_reference:
+  name: training_results_reference
+  connection:
+    endpoint_url: "https://s3-api.us-geo.objectstorage.service.networklayer.com"
+    access_key_id: "deeab38a8ee446d29e4498d70d60e639"
+    secret_access_key: "8a05e5ccde3d5911db0e83686a84eaf6776655d38127c863"
+  target:
+    bucket: result-bucket-36
+  type: s3
